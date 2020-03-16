@@ -1,0 +1,51 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate.ddl-auto-generate-ddl: update
+    show-sql: false
+---
+spring:
+  profiles: dev
+  datasource.url: jdbc:postgresql://10.37.37.103:5432/smartplm
+  datasource.username: smartplm
+  datasource.password: smartplm@dev
+  datasource.driver-class-name: org.postgresql.Driver
+
+plm:
+  server.url: https://plmupg11.wistron.com:443/Windchill/servlet/rest/wistronRestApi/
+  username: orgadmin
+  password: orgadmin
+---
+spring:
+  profiles: qas
+  datasource.url: jdbc:postgresql://10.37.35.178:5435/smartplm
+  datasource.username: smartplm
+  datasource.password: smartplm@qas
+  datasource.driver-class-name: org.postgresql.Driver
+
+plm:
+  server.url: https://plmapq.wistron.com:443/Windchill/servlet/rest/wistronRestApi/
+  username: orgadmin
+  password: orgadmin
+---
+spring:
+  profiles: prd
+  datasource.url: jdbc:postgresql://10.37.34.126:5435/smartplm
+  datasource.username: smartplm
+  datasource.password: smartplm#prd
+  datasource.driver-class-name: org.postgresql.Driver
+
+plm:
+  server.url: https://plm.wistron.com:443/Windchill/servlet/rest/wistronRestApi/
+  username: orgadmin
+  password: orgadmin
+---
+minio:
+  server.url: 
+  accesskey: rlc_minio
+  secretkey: rlc_minio
